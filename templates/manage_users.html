@@ -876,37 +876,89 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-                
-        <div class="container-fluid py-4">
-            <div class="row justify-content-center">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <!-- DataTables JS и плагины -->
+            <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.colVis.min.js"></script>
+            <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+            <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+            <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
+            <!-- Подключение стилей DataTables -->
+            <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+            <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
+            <!-- Подключение библиотеки jQuery -->
+            <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+            <!-- Подключение скрипта DataTables -->
+            <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+            <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.colVis.min.js"></script>
+            <div class="container-fluid py-4">
+                <div class="row justify-content-center">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title text-center">База данных клиентов</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Имя</th>
-                                            <th>Фамилия</th>
-                                            <th>Город</th>
-                                            <th>Тариф клиента</th>
-                                            <th>Телефон</th>
-                                            <th>Доп. телефон</th>
-                                            <th>TG ник</th>
-                                            <th>Email</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card">
+                <div class="card-header">
+                <h5 class="card-title text-center">База данных клиентов</h5>
                 </div>
-            </div>
-        </div>
+                <div class="card-body">
+                <div class="table-responsive">
+                <table class="table display align-items-center mb-0" id="userTable">
+                <thead>
+                <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Город</th>
+                <th>Тариф клиента</th>
+                <th>Телефон</th>
+                <th>Доп. телефон</th>
+                <th>TG ник</th>
+                <th>Email</th>
+                </tr>
+                </thead>
+                </table>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#userTable').DataTable({
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copyHtml5',
+                                'excelHtml5',
+                                'pdfHtml5',
+                                'colvis'
+                            ],
+                            ajax: {
+                                url: '/get_all_users',  // Указываем путь к вашему маршруту Flask
+                                dataSrc: ''
+                            },
+                            columns: [
+                                { data: 'id' },
+                                { data: 'name' },
+                                { data: 'surname' },
+                                { data: 'city_name' },
+                                {data: 'user_tarif'},
+                                { data: 'phone_num' }, 
+                                { data: 'extra_phone_num' },
+                                { data: 'tg_nickname' },
+                                { data: 'email' }
+                            ]
+                        });
+                    });
+                    </script>
+                   
 
             <!-- ============================================================== -->
             <!-- End Page content -->
@@ -1608,34 +1660,7 @@
     <script src="assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
     <script src="assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('#datatable-buttons').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copyHtml5',
-                    'excelHtml5',
-                    'pdfHtml5',
-                    'colvis'
-                ],
-                ajax: {
-                    url: '/get_all_users', // Указываем путь к вашему маршруту Flask
-                    dataSrc: ''
-                },
-                columns: [
-                    { data: 'id' },
-                    { data: 'name' },
-                    { data: 'surname' },
-                    { data: 'city_name' },
-                    { data: 'user_tarif' },
-                    { data: 'phone_num' },
-                    { data: 'extra_phone_num' },
-                    { data: 'tg_nickname' },
-                    { data: 'email' }
-                ]
-            });
-        });
-    </script>
+   
 
     </body>
 </html> 

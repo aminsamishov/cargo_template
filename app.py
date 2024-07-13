@@ -60,7 +60,9 @@ def check_admin():
         if 'admin_logged_in' not in session or not session['admin_logged_in']:
             return redirect(url_for('admin_page'))
 
-
+@app.route('/test')
+def test_table():
+    return render_template('tables-datatable.html')
 
 def admin_login_required(f):
     @wraps(f)
