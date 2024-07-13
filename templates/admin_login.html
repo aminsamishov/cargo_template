@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Log In Cargo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <!-- App favicon -->
+<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+<!-- Theme Config Js -->
+<script src="{{ url_for('static', filename='js/hyper-config.js') }}"></script>
+
+<!-- App css -->
+<link href="{{ url_for('static', filename='css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+
+<!-- Icons css -->
+<link href="{{ url_for('static', filename='css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body class="authentication-bg">
+        <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-4 col-lg-5">
+                        <div class="card">
+
+                            <!-- Logo -->
+                            <div class="card-header py-4 text-center bg-dark">
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" style="width: 150px; height: 120px;">
+                                </a>
+                            </div>
+                            
+
+                            <div class="card-body p-4">
+                                <div class="text-center w-75 m-auto">
+                                    <h4 class="text-dark-50 text-center pb-0 fw-bold">Вход</h4>
+                                    <p class="text-muted mb-4">Введите свой логин и пароль для доступа к панели администратора.</p>
+                                </div>
+                            
+                                <form action="{{ url_for('admin_login') }}" method="POST">
+                                    <div class="mb-3">
+                                        <label for="emailaddress" class="form-label">Логин</label>
+                                        <input class="form-control" type="text" id="emailaddress" name="login" required="" placeholder="Введите ваш логин">
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <a href="pages-recoverpw.html" class="text-muted float-end"><small>Забыли пароль?</small></a>
+                                        <label for="password" class="form-label">Пароль</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="password" id="password" name="password" class="form-control" placeholder="Введите ваш пароль">
+                                            <div class="input-group-text" data-password="false">
+                                                <span class="password-eye"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="mb-3 mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" name="remember" checked>
+                                            <label class="form-check-label" for="checkbox-signin">Запомнить меня</label>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="mb-3 mb-0 text-center">
+                                        <button class="btn btn-dark" type="submit"> Войти </button>
+                                    </div>
+                                </form>
+                                
+                                
+                            </div> <!-- end card-body -->
+                            </div>
+                           
+                            
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+
+       
+
+    </body>
+</html>
